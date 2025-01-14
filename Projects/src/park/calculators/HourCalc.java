@@ -4,14 +4,14 @@ import park.calculators.interfaces.ICalculator;
 
 public class HourCalc implements ICalculator {
 
-    private int hourValue;
+    private int hourPrice;
 
-    public HourCalc(int hourValue) {
-        this.hourValue = hourValue;
+    public HourCalc(int hourPrice) {
+        this.hourPrice = hourPrice;
     }
     
     @Override
     public int calc(int hoursParked) {
-        return  hoursParked * hourValue;       
+        return  hoursParked * hourPrice;       
     }
 }
