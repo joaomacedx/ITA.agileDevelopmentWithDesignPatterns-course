@@ -3,6 +3,7 @@ import static org.junit.Assert.assertEquals;
 
 import org.junit.*;
 
+import park.calculators.DailyCalc;
 import park.calculators.HourCalc;
 import park.calculators.HourCalcWithInitialValue;
 import park.taxes.*;
@@ -20,6 +21,7 @@ public class ParkingTaxTest {
       // Assert
       assertEquals(12, value);
   }
+
   @Test
   public void rateWithInitialValueAndAfterSpecificTimeFixedPerHour(){
     // Arrange
@@ -40,6 +42,7 @@ public class ParkingTaxTest {
     // Assert
     assertEquals(9, value);
   }
+
   @Test
   public void rateWithInitialValueAndAtTheHourLimit(){
     // Arrange
@@ -54,5 +57,20 @@ public class ParkingTaxTest {
     int value = tax.value();
     // Assert
     assertEquals(5, value);
+  }
+
+  @Test
+  public void dailyTax(){
+    // Arrange
+    int hoursParked = 50;
+    int dailyTax = 20;
+    ParkingTax tax =   
+        new ParkingTax(hoursParked,
+            new DailyCalc(dailyTax)
+        );
+    // Act 
+    int value = tax.value();
+    // Assert
+    assertEquals(60, value);
   }
 }
